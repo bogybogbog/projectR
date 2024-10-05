@@ -7,12 +7,11 @@ import Home from "./Home";
 import Parent from "./Parent/Parent";
 
 function App() {
-
   return (
     <>
       {/* <Home/>
       <About/> */}
-      <Parent/>
+      <Parent />
     </>
   );
 }
