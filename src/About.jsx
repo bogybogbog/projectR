@@ -1,11 +1,31 @@
-import React from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 
 export default function About() {
+  const [products, setProducts] = useState([]);
+  async function getProducts() {
+    let { data } = await axios.get(
+      "https://ecommerce.routemisr.com/api/v1/products"
+    );
+    console.log(data.data);
+    setProducts(data.data);
+  }
+  useEffect(() => {
+    getProducts();
+  }, []);
   return (
-    <div className="bg-slate-400 p-3">
-      <i className="fab fa-facebook text-3xl"></i>
-      <i className="fab fa-twitter text-3xl"></i>
-      <i className="fab fa-tiktok text-3xl"></i>
-    </div>
+    <>
+      <h1>About</h1>
+      <div className="row">
+        {products.length > 0 ? products.map((product) => (
+          <div className="w-1/6">
+            <div>
+              <img src={product.imageCover} className="w-full" alt="" />
+              <h2>{product.title}</h2>
+            </div>
+          </div>
+        )):<div class="spinner"></div>}
+      </div>
+    </>
   );
 }
