@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Child from "../Child/Child";
+import style from "./parent.module.css"
 
 export default function Parent() {
   //   const [count, setCount] = useState(6);
@@ -84,6 +85,7 @@ export default function Parent() {
   }
   return (
     <>
+    <h1 className={`${style.test} ${style.bg} m-2`}>Parent</h1>
       {/* <h1>Parent component </h1> */}
       {/* <Child x={count} y={age} userDetailes = {user} /> */}
       <div className="container mx-auto">
